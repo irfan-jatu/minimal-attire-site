@@ -65,6 +65,7 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        serif: ['Cormorant Garamond', 'Georgia', 'serif'],
       },
       keyframes: {
         "accordion-down": {
