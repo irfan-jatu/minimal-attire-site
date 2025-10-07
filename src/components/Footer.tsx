@@ -17,21 +17,21 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="font-medium mb-4">Shop</h3>
+            <h3 className="font-medium mb-4">Collections</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Link to="/clothes" className="hover:text-foreground transition-colors">Clothes</Link></li>
-              <li><Link to="/shoes" className="hover:text-foreground transition-colors">Shoes</Link></li>
-              <li><Link to="/watches" className="hover:text-foreground transition-colors">Watches</Link></li>
-              <li><Link to="/bags" className="hover:text-foreground transition-colors">Bags</Link></li>
-              <li><Link to="/glasses" className="hover:text-foreground transition-colors">Glasses</Link></li>
+              <li><Link to="/clothes" className="hover:text-foreground transition-colors">Apparel</Link></li>
+              <li><Link to="/shoes" className="hover:text-foreground transition-colors">Footwear</Link></li>
+              <li><Link to="/watches" className="hover:text-foreground transition-colors">Timepieces</Link></li>
+              <li><Link to="/bags" className="hover:text-foreground transition-colors">Leather Goods</Link></li>
+              <li><Link to="/glasses" className="hover:text-foreground transition-colors">Eyewear</Link></li>
             </ul>
           </div>
 
           <div>
             <h3 className="font-medium mb-4">Company</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Link to="/about" className="hover:text-foreground transition-colors">About Us</Link></li>
-              <li><Link to="/contact" className="hover:text-foreground transition-colors">Contact</Link></li>
+              <li><Link to="/about" className="hover:text-foreground transition-colors">Our Story</Link></li>
+              <li><Link to="/contact" className="hover:text-foreground transition-colors">Get in Touch</Link></li>
             </ul>
           </div>
 

@@ -9,25 +9,25 @@ const Navigation = () => {
     name: "Home",
     path: "/"
   }, {
-    name: "Clothes",
+    name: "Apparel",
     path: "/clothes"
   }, {
-    name: "Shoes",
+    name: "Footwear",
     path: "/shoes"
   }, {
-    name: "Watches",
+    name: "Timepieces",
     path: "/watches"
   }, {
-    name: "Bags",
+    name: "Leather Goods",
     path: "/bags"
   }, {
-    name: "Glasses",
+    name: "Eyewear",
     path: "/glasses"
   }, {
-    name: "About",
+    name: "Our Story",
     path: "/about"
   }, {
-    name: "Contact",
+    name: "Get in Touch",
     path: "/contact"
   }];
   const isActive = (path: string) => location.pathname === path;
