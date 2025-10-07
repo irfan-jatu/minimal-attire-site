@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { ShoppingBag, Menu, X } from "lucide-react";
+import { ShoppingBag, MoreVertical, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 const Navigation = () => {
@@ -48,7 +48,7 @@ const Navigation = () => {
 
           {/* Mobile Menu Button */}
           <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {isOpen ? <X className="h-5 w-5" /> : <MoreVertical className="h-5 w-5" />}
           </Button>
         </div>
 
