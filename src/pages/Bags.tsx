@@ -2,19 +2,10 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
 import ScrollFadeIn from "@/components/ScrollFadeIn";
-import bagsImg from "@/assets/category-bags.jpg";
+import { getProductsByCategory } from "@/data/products";
 
 const Bags = () => {
-  const products = [
-    { title: "Leather Tote", price: "$189", image: bagsImg },
-    { title: "Messenger Bag", price: "$149", image: bagsImg },
-    { title: "Backpack", price: "$129", image: bagsImg },
-    { title: "Crossbody Bag", price: "$99", image: bagsImg },
-    { title: "Clutch", price: "$79", image: bagsImg },
-    { title: "Duffle Bag", price: "$199", image: bagsImg },
-    { title: "Laptop Bag", price: "$159", image: bagsImg },
-    { title: "Evening Bag", price: "$119", image: bagsImg },
-  ];
+  const products = getProductsByCategory("bags");
 
   return (
     <div className="min-h-screen pt-16">

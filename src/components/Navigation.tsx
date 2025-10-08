@@ -1,9 +1,13 @@
 import { Link, useLocation } from "react-router-dom";
-import { ShoppingBag, MoreVertical, X } from "lucide-react";
+import { ShoppingBag, MoreVertical, X, ShoppingCart } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useCart } from "@/context/CartContext";
+import CartDrawer from "@/components/CartDrawer";
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
+  const { totalItems } = useCart();
   const location = useLocation();
   const navLinks = [{
     name: "Home",
@@ -45,12 +49,40 @@ const Navigation = () => {
                 {link.name}
                 <span className={`absolute -bottom-1 left-0 h-px bg-foreground transition-all duration-300 ${isActive(link.path) ? "w-full" : "w-0 group-hover:w-full"}`}></span>
               </Link>)}
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={() => setCartOpen(true)}
+              className="relative"
+            >
+              <ShoppingCart className="h-5 w-5" strokeWidth={1.5} />
+              {totalItems > 0 && (
+                <span className="absolute -top-1 -right-1 bg-foreground text-background w-5 h-5 rounded-full text-xs flex items-center justify-center">
+                  {totalItems}
+                </span>
+              )}
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <X className="h-5 w-5" /> : <MoreVertical className="h-5 w-5" />}
-          </Button>
+          <div className="flex items-center gap-2 md:hidden">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={() => setCartOpen(true)}
+              className="relative"
+            >
+              <ShoppingCart className="h-5 w-5" strokeWidth={1.5} />
+              {totalItems > 0 && (
+                <span className="absolute -top-1 -right-1 bg-foreground text-background w-5 h-5 rounded-full text-xs flex items-center justify-center">
+                  {totalItems}
+                </span>
+              )}
+            </Button>
+            <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)}>
+              {isOpen ? <X className="h-5 w-5" /> : <MoreVertical className="h-5 w-5" />}
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -60,6 +92,7 @@ const Navigation = () => {
               </Link>)}
           </div>}
       </div>
+      <CartDrawer open={cartOpen} onOpenChange={setCartOpen} />
     </nav>;
 };
 export default Navigation;

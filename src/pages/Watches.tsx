@@ -2,19 +2,10 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
 import ScrollFadeIn from "@/components/ScrollFadeIn";
-import watchesImg from "@/assets/category-watches.jpg";
+import { getProductsByCategory } from "@/data/products";
 
 const Watches = () => {
-  const products = [
-    { title: "Chronograph Watch", price: "$299", image: watchesImg },
-    { title: "Minimalist Timepiece", price: "$179", image: watchesImg },
-    { title: "Dive Watch", price: "$349", image: watchesImg },
-    { title: "Smart Watch", price: "$399", image: watchesImg },
-    { title: "Vintage Style", price: "$259", image: watchesImg },
-    { title: "Sports Watch", price: "$189", image: watchesImg },
-    { title: "Dress Watch", price: "$429", image: watchesImg },
-    { title: "Automatic Watch", price: "$599", image: watchesImg },
-  ];
+  const products = getProductsByCategory("watches");
 
   return (
     <div className="min-h-screen pt-16">

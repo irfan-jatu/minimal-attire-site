@@ -4,6 +4,7 @@ import CategoryCard from "@/components/CategoryCard";
 import ProductCard from "@/components/ProductCard";
 import ScrollFadeIn from "@/components/ScrollFadeIn";
 import { Button } from "@/components/ui/button";
+import { products } from "@/data/products";
 import heroImage from "@/assets/hero-banner.jpg";
 import clothesImg from "@/assets/category-clothes.jpg";
 import shoesImg from "@/assets/category-shoes.jpg";
@@ -21,11 +22,11 @@ const Index = () => {
   ];
 
   const featuredProducts = [
-    { title: "Premium Cotton Shirt", price: "$89", image: clothesImg },
-    { title: "Leather Sneakers", price: "$159", image: shoesImg },
-    { title: "Chronograph Watch", price: "$299", image: watchesImg },
-    { title: "Designer Tote Bag", price: "$179", image: bagsImg },
-  ];
+    products.find(p => p.id === "clothes-1"),
+    products.find(p => p.id === "shoes-2"),
+    products.find(p => p.id === "watches-1"),
+    products.find(p => p.id === "bags-1"),
+  ].filter(Boolean);
 
   return (
     <div className="min-h-screen">
@@ -88,8 +89,8 @@ const Index = () => {
           </ScrollFadeIn>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
             {featuredProducts.map((product, index) => (
-              <ScrollFadeIn key={product.title} delay={index * 100}>
-                <ProductCard {...product} />
+              <ScrollFadeIn key={product!.id} delay={index * 100}>
+                <ProductCard {...product!} />
               </ScrollFadeIn>
             ))}
           </div>

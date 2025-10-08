@@ -2,19 +2,10 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
 import ScrollFadeIn from "@/components/ScrollFadeIn";
-import glassesImg from "@/assets/category-glasses.jpg";
+import { getProductsByCategory } from "@/data/products";
 
 const Glasses = () => {
-  const products = [
-    { title: "Aviator Sunglasses", price: "$149", image: glassesImg },
-    { title: "Wayfarer Style", price: "$129", image: glassesImg },
-    { title: "Round Frames", price: "$139", image: glassesImg },
-    { title: "Cat Eye", price: "$159", image: glassesImg },
-    { title: "Sport Sunglasses", price: "$119", image: glassesImg },
-    { title: "Vintage Frames", price: "$169", image: glassesImg },
-    { title: "Blue Light Glasses", price: "$89", image: glassesImg },
-    { title: "Oversized Frames", price: "$179", image: glassesImg },
-  ];
+  const products = getProductsByCategory("glasses");
 
   return (
     <div className="min-h-screen pt-16">
