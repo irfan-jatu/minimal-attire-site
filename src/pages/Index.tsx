@@ -9,7 +9,7 @@ import heroImage from "@/assets/hero-banner.jpg";
 import clothesImg from "@/assets/category-clothes.jpg";
 import shoesImg from "@/assets/category-shoes.jpg";
 import watchesImg from "@/assets/category-watches.jpg";
-import bagsImg from "@/assets/category-bags.jpg";
+import bagsImg from "@/assets/category-bags-new.jpg";
 import glassesImg from "@/assets/category-glasses.jpg";
 
 const Index = () => {
