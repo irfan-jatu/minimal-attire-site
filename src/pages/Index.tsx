@@ -33,24 +33,24 @@ const Index = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden pt-20">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${heroImage})` }}
         >
-          <div className="absolute inset-0 bg-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40" />
         </div>
-        <div className="relative z-10 text-center px-4 animate-fade-in-up max-w-4xl mx-auto">
-          <h1 className="text-6xl md:text-8xl font-serif font-light tracking-wide mb-8 text-white">
+        <div className="relative z-10 text-center px-4 sm:px-6 animate-fade-in-up max-w-5xl mx-auto">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-light tracking-wide mb-6 md:mb-8 text-white leading-tight">
             Timeless Excellence
           </h1>
-          <p className="text-lg md:text-xl text-white/90 mb-12 font-light tracking-wide">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-10 md:mb-12 font-light tracking-wide max-w-2xl mx-auto">
             Where heritage meets contemporary elegance
           </p>
           <Button
             size="lg"
             variant="outline"
-            className="border-white text-white hover:bg-white hover:text-black transition-all duration-500 px-12 py-6 text-sm tracking-[0.2em] uppercase"
+            className="border-2 border-white text-white hover:bg-white hover:text-foreground transition-all duration-500 px-8 sm:px-12 h-12 sm:h-14 text-xs sm:text-sm tracking-[0.2em] uppercase shadow-lg hover:shadow-xl"
           >
             Explore Collection
           </Button>
@@ -58,16 +58,16 @@ const Index = () => {
       </section>
 
       {/* Categories Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+      <section className="container-wide py-20 md:py-32">
         <ScrollFadeIn>
-          <h2 className="text-4xl md:text-6xl font-serif font-light text-center mb-4 tracking-wide">
+          <h2 className="font-serif font-light text-center mb-3 md:mb-4 tracking-wide">
             Collections
           </h2>
-          <p className="text-center text-muted-foreground mb-20 text-sm tracking-wider uppercase">
+          <p className="text-center text-muted-foreground mb-12 md:mb-20 text-xs sm:text-sm tracking-wider uppercase">
             Curated for the Discerning
           </p>
         </ScrollFadeIn>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-12">
           {categories.map((category, index) => (
             <ScrollFadeIn key={category.title} delay={index * 100}>
               <CategoryCard {...category} />
@@ -77,17 +77,17 @@ const Index = () => {
       </section>
 
       {/* Featured Products */}
-      <section className="bg-secondary/30 py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-muted/50 py-20 md:py-32">
+        <div className="container-wide">
           <ScrollFadeIn>
-            <h2 className="text-4xl md:text-6xl font-serif font-light text-center mb-4 tracking-wide">
+            <h2 className="font-serif font-light text-center mb-3 md:mb-4 tracking-wide">
               Featured Selection
             </h2>
-            <p className="text-center text-muted-foreground mb-20 text-sm tracking-wider uppercase">
+            <p className="text-center text-muted-foreground mb-12 md:mb-20 text-xs sm:text-sm tracking-wider uppercase">
               Handpicked Essentials
             </p>
           </ScrollFadeIn>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-12">
             {featuredProducts.map((product, index) => (
               <ScrollFadeIn key={product!.id} delay={index * 100}>
                 <ProductCard {...product!} />

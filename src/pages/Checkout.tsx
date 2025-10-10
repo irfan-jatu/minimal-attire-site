@@ -56,9 +56,10 @@ const Checkout = () => {
     return (
       <div className="min-h-screen bg-background">
         <Navigation />
-        <main className="container mx-auto px-4 py-16 text-center">
-          <h1 className="text-3xl font-light mb-4">Your cart is empty</h1>
-          <Button onClick={() => navigate("/")} variant="default">
+        <main className="container-wide py-16 md:py-24 pt-24 md:pt-32 text-center">
+          <h1 className="font-serif font-light mb-4 md:mb-6 text-3xl md:text-4xl tracking-wide">Your cart is empty</h1>
+          <p className="text-muted-foreground mb-8 text-sm md:text-base">Add some items to get started</p>
+          <Button onClick={() => navigate("/")} variant="default" size="lg">
             Continue Shopping
           </Button>
         </main>
@@ -70,27 +71,27 @@ const Checkout = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <main className="container mx-auto px-4 py-16">
-        <h1 className="text-4xl font-light mb-8">Checkout</h1>
+      <main className="container-wide py-12 md:py-16 pt-24 md:pt-28">
+        <h1 className="font-serif font-light mb-8 md:mb-12 text-3xl md:text-4xl tracking-wide">Checkout</h1>
         
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
           {/* Order Summary */}
           <div className="lg:col-span-1 order-2 lg:order-1">
-            <div className="border border-border p-6 sticky top-24">
-              <h2 className="text-xl font-light mb-4">Order Summary</h2>
-              <div className="space-y-3 mb-4">
+            <div className="border border-border p-6 md:p-8 sticky top-28 bg-card/50 backdrop-blur-sm rounded-none shadow-sm">
+              <h2 className="text-xl md:text-2xl font-serif font-light mb-6 tracking-wide">Order Summary</h2>
+              <div className="space-y-4 mb-6">
                 {items.map((item) => (
-                  <div key={item.id} className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">
-                      {item.title} x {item.quantity}
+                  <div key={item.id} className="flex justify-between text-sm gap-4">
+                    <span className="text-muted-foreground flex-1 truncate">
+                      {item.title} × {item.quantity}
                     </span>
-                    <span>${(item.price * item.quantity).toFixed(2)}</span>
+                    <span className="font-light whitespace-nowrap">${(item.price * item.quantity).toFixed(2)}</span>
                   </div>
                 ))}
               </div>
-              <div className="border-t border-border pt-4 flex justify-between font-medium">
-                <span>Total</span>
-                <span>${totalPrice.toFixed(2)}</span>
+              <div className="border-t border-border pt-4 flex justify-between text-base md:text-lg font-light">
+                <span className="tracking-wide">Total</span>
+                <span className="font-normal">${totalPrice.toFixed(2)}</span>
               </div>
             </div>
           </div>
@@ -98,9 +99,9 @@ const Checkout = () => {
           {/* Checkout Form */}
           <div className="lg:col-span-2 order-1 lg:order-2">
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <div className="border border-border p-6">
-                  <h2 className="text-xl font-light mb-6">Delivery Information</h2>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 md:space-y-8">
+                <div className="border border-border p-6 md:p-8 bg-card/30 backdrop-blur-sm rounded-none shadow-sm">
+                  <h2 className="text-xl md:text-2xl font-serif font-light mb-6 md:mb-8 tracking-wide">Delivery Information</h2>
                   
                   <FormField
                     control={form.control}
@@ -166,8 +167,8 @@ const Checkout = () => {
                   />
                 </div>
 
-                <div className="border border-border p-6">
-                  <h2 className="text-xl font-light mb-6">Payment Method</h2>
+                <div className="border border-border p-6 md:p-8 bg-card/30 backdrop-blur-sm rounded-none shadow-sm">
+                  <h2 className="text-xl md:text-2xl font-serif font-light mb-6 md:mb-8 tracking-wide">Payment Method</h2>
                   
                   <FormField
                     control={form.control}
@@ -206,16 +207,16 @@ const Checkout = () => {
                   />
                 </div>
 
-                <div className="flex gap-4">
+                <div className="flex flex-col sm:flex-row gap-4">
                   <Button 
                     type="button" 
                     variant="outline" 
                     onClick={() => navigate(-1)}
-                    className="flex-1"
+                    className="flex-1 order-2 sm:order-1"
                   >
                     Back
                   </Button>
-                  <Button type="submit" className="flex-1">
+                  <Button type="submit" className="flex-1 order-1 sm:order-2">
                     Place Order
                   </Button>
                 </div>
