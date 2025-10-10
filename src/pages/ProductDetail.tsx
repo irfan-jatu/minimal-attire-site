@@ -38,6 +38,11 @@ const ProductDetail = () => {
     });
   };
 
+  const handleOrderNow = () => {
+    addToCart(product);
+    navigate("/checkout");
+  };
+
   return (
     <div className="min-h-screen pt-16">
       <Navigation />
@@ -82,7 +87,7 @@ const ProductDetail = () => {
                   Add to Cart
                 </Button>
                 <Button
-                  onClick={handleAddToCart}
+                  onClick={handleOrderNow}
                   variant="outline"
                   className="w-full uppercase tracking-[0.2em] text-xs h-12"
                 >

@@ -3,6 +3,7 @@ import { useCart } from "@/context/CartContext";
 import { Button } from "@/components/ui/button";
 import { Minus, Plus, X } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useNavigate } from "react-router-dom";
 
 interface CartDrawerProps {
   open: boolean;
@@ -11,6 +12,12 @@ interface CartDrawerProps {
 
 const CartDrawer = ({ open, onOpenChange }: CartDrawerProps) => {
   const { items, removeFromCart, updateQuantity, totalPrice } = useCart();
+  const navigate = useNavigate();
+
+  const handleCheckout = () => {
+    onOpenChange(false);
+    navigate("/checkout");
+  };
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
@@ -79,7 +86,7 @@ const CartDrawer = ({ open, onOpenChange }: CartDrawerProps) => {
                 <span className="tracking-wide">Total</span>
                 <span>${totalPrice.toFixed(2)}</span>
               </div>
-              <Button className="w-full uppercase tracking-[0.2em] text-xs">
+              <Button onClick={handleCheckout} className="w-full uppercase tracking-[0.2em] text-xs">
                 Proceed to Checkout
               </Button>
             </div>
