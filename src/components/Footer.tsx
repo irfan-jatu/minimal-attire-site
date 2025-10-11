@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="col-span-1 sm:col-span-2 lg:col-span-1">
             <Link to="/" className="flex items-center space-x-3 mb-4 group">
               <ShoppingBag className="h-6 w-6 transition-transform group-hover:scale-110" strokeWidth={1.5} />
-              <span className="text-2xl font-serif font-light tracking-[0.2em]">BMJ</span>
+              <span className="text-2xl font-serif font-light tracking-[0.2em]">I.J.JATU</span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
               Premium fashion and accessories for the modern lifestyle. Timeless elegance meets contemporary design.
@@ -47,7 +47,7 @@ const Footer = () => {
 
         <div className="mt-12 pt-8 border-t border-border text-center">
           <p className="text-xs sm:text-sm text-muted-foreground tracking-wide">
-            &copy; {new Date().getFullYear()} BMJ. All rights reserved.
+            &copy; {new Date().getFullYear()} I.J.JATU. All rights reserved.
           </p>
         </div>
       </div>

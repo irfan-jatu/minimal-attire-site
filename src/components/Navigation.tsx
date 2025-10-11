@@ -40,7 +40,7 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16 sm:h-20">
           <Link to="/" className="flex items-center space-x-2 sm:space-x-3 group">
             <ShoppingBag className="h-5 w-5 sm:h-6 sm:w-6 transition-transform group-hover:scale-110" strokeWidth={1.5} />
-            <span className="text-xl sm:text-2xl font-serif font-light tracking-[0.2em]">BMJ</span>
+            <span className="text-xl sm:text-2xl font-serif font-light tracking-[0.2em]">I.J.JATU</span>
           </Link>
 
           {/* Desktop Navigation */}
