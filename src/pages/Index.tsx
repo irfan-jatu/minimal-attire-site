@@ -5,7 +5,7 @@ import ProductCard from "@/components/ProductCard";
 import ScrollFadeIn from "@/components/ScrollFadeIn";
 import { Button } from "@/components/ui/button";
 import { products } from "@/data/products";
-import heroImage from "@/assets/hero-banner.jpg";
+import heroImage from "@/assets/hero-banner-dark.jpg";
 import clothesImg from "@/assets/category-clothes.jpg";
 import shoesImg from "@/assets/category-shoes.jpg";
 import watchesImg from "@/assets/category-watches.jpg";
