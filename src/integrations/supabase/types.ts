@@ -14,6 +14,63 @@ export type Database = {
   }
   public: {
     Tables: {
+      orders: {
+        Row: {
+          address: string
+          cart_items: Json
+          created_at: string | null
+          email: string
+          full_name: string
+          id: string
+          phone: string
+          status: string | null
+          total_amount: number
+          user_id: string | null
+        }
+        Insert: {
+          address: string
+          cart_items: Json
+          created_at?: string | null
+          email: string
+          full_name: string
+          id?: string
+          phone: string
+          status?: string | null
+          total_amount: number
+          user_id?: string | null
+        }
+        Update: {
+          address?: string
+          cart_items?: Json
+          created_at?: string | null
+          email?: string
+          full_name?: string
+          id?: string
+          phone?: string
+          status?: string | null
+          total_amount?: number
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string | null
+          email: string | null
+          id: string
+        }
+        Insert: {
+          created_at?: string | null
+          email?: string | null
+          id: string
+        }
+        Update: {
+          created_at?: string | null
+          email?: string | null
+          id?: string
+        }
+        Relationships: []
+      }
       user: {
         Row: {
           Address: string | null

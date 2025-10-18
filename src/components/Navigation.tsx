@@ -1,14 +1,28 @@
 import { Link, useLocation } from "react-router-dom";
-import { ShoppingBag, MoreVertical, X, ShoppingCart } from "lucide-react";
-import { useState } from "react";
+import { ShoppingBag, MoreVertical, X, ShoppingCart, User } from "lucide-react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
+import { supabase } from "@/integrations/supabase/client";
 import CartDrawer from "@/components/CartDrawer";
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
+  const [user, setUser] = useState<any>(null);
   const { totalItems } = useCart();
   const location = useLocation();
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
   const navLinks = [{
     name: "Home",
     path: "/"
@@ -49,6 +63,11 @@ const Navigation = () => {
                 {link.name}
                 <span className={`absolute -bottom-1 left-0 h-px bg-foreground transition-all duration-300 ${isActive(link.path) ? "w-full" : "w-0 group-hover:w-full"}`}></span>
               </Link>)}
+            <Link to="/auth">
+              <Button variant="ghost" size="icon" className="hover:bg-muted">
+                <User className="h-6 w-6" strokeWidth={1.5} />
+              </Button>
+            </Link>
             <Button 
               variant="ghost" 
               size="icon" 
@@ -66,6 +85,11 @@ const Navigation = () => {
 
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-2 lg:hidden">
+            <Link to="/auth">
+              <Button variant="ghost" size="icon" className="hover:bg-muted">
+                <User className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={1.5} />
+              </Button>
+            </Link>
             <Button 
               variant="ghost" 
               size="icon" 

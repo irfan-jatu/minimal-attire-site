@@ -2,6 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -9,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useCart } from "@/context/CartContext";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
@@ -28,6 +30,23 @@ const Checkout = () => {
   const navigate = useNavigate();
   const { items, totalPrice, clearCart } = useCart();
   const { toast } = useToast();
+  const [user, setUser] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (!session) {
+        toast({
+          title: "Authentication Required",
+          description: "Please sign in to place an order",
+          variant: "destructive",
+        });
+        navigate("/auth");
+      } else {
+        setUser(session.user);
+      }
+    });
+  }, [navigate, toast]);
 
   const form = useForm<CheckoutFormValues>({
     resolver: zodResolver(checkoutSchema),
@@ -40,16 +59,49 @@ const Checkout = () => {
     },
   });
 
-  const onSubmit = (data: CheckoutFormValues) => {
-    console.log("Order placed:", data);
-    
-    toast({
-      title: "Order Placed Successfully! 🎉",
-      description: `Thank you ${data.name}! Your order will be delivered soon.`,
-    });
-    
-    clearCart();
-    navigate("/");
+  const onSubmit = async (data: CheckoutFormValues) => {
+    if (!user) {
+      toast({
+        title: "Error",
+        description: "You must be signed in to place an order",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const { error } = await supabase.from("orders").insert([{
+        user_id: user.id,
+        full_name: data.name,
+        email: data.deliveryNotes || user.email,
+        phone: data.contact,
+        address: data.address,
+        cart_items: items as any,
+        total_amount: totalPrice,
+        status: "pending",
+      }]);
+
+      if (error) throw error;
+
+      toast({
+        title: "Order Placed Successfully! 🎉",
+        description: `Thank you ${data.name}! Your order will be delivered soon.`,
+      });
+
+      clearCart();
+      navigate("/");
+    } catch (error: any) {
+      console.error("Error placing order:", error);
+      toast({
+        title: "Error",
+        description: error.message || "Failed to place order. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (items.length === 0) {
@@ -216,8 +268,8 @@ const Checkout = () => {
                   >
                     Back
                   </Button>
-                  <Button type="submit" className="flex-1 order-1 sm:order-2">
-                    Place Order
+                  <Button type="submit" className="flex-1 order-1 sm:order-2" disabled={loading}>
+                    {loading ? "Placing Order..." : "Place Order"}
                   </Button>
                 </div>
               </form>
