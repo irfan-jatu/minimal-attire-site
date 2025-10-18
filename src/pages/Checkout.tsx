@@ -108,7 +108,7 @@ const Checkout = () => {
                     name="name"
                     render={({ field }) => (
                       <FormItem className="mb-4">
-                        <FormLabel>Full Name</FormLabel>
+                        <FormLabel>Name</FormLabel>
                         <FormControl>
                           <Input placeholder="John Doe" {...field} />
                         </FormControl>
