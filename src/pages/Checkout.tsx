@@ -122,7 +122,7 @@ const Checkout = () => {
                     name="contact"
                     render={({ field }) => (
                       <FormItem className="mb-4">
-                        <FormLabel>Contact Number</FormLabel>
+                        <FormLabel>Phone</FormLabel>
                         <FormControl>
                           <Input placeholder="+1234567890" {...field} />
                         </FormControl>
