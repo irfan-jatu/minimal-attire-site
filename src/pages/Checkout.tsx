@@ -136,7 +136,7 @@ const Checkout = () => {
                     name="address"
                     render={({ field }) => (
                       <FormItem className="mb-4">
-                        <FormLabel>Delivery Address</FormLabel>
+                        <FormLabel>Address</FormLabel>
                         <FormControl>
                           <Textarea 
                             placeholder="Enter your complete address with pincode" 
