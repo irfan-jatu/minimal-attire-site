@@ -154,7 +154,7 @@ const Checkout = () => {
                     name="deliveryNotes"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Delivery Notes (Optional)</FormLabel>
+                        <FormLabel>Email</FormLabel>
                         <FormControl>
                           <Textarea 
                             placeholder="Any special instructions for delivery"
